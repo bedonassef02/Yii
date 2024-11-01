@@ -40,7 +40,14 @@ class SiteController extends Controller {
         ];
     }
     public function actionIndex() {
+
+        return phpinfo();
+
         return $this->render('index');
+    }
+
+    public function actionTestWidget() {
+        return $this->render('testwidget');
     }
     public function actionLogin() {
         if (!\Yii::$app->user->isGuest) {
