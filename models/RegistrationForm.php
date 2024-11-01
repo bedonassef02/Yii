@@ -20,5 +20,18 @@ class RegistrationForm extends Model {
             'photos' => 'Photos',
         ];
     }
+
+    public function rules() {
+        return [
+            // the username, password, email, country, city, and phone attributes are required
+            [['password', 'email', 'country', 'city', 'phone'], 'required'],
+            ['username', 'required', 'message' => 'Username is required'],
+            ['country', 'trim'],
+            ['city', 'default'],
+            // the email attribute should be a valid email address
+            ['email', 'email'],
+            ['city', 'default', 'value' => 'Paris'],
+        ];
+    }
 }
 ?>
