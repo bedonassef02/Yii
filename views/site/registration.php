@@ -1,20 +1,24 @@
 <?php
-//use yii\bootstrap\ActiveForm;
-//use yii\bootstrap\Html;
+use yii\bootstrap5\ActiveForm;
+use yii\bootstrap5\Html;
 ?>
+
 <div class = "row">
     <div class = "col-lg-5">
-        <?php $form = \yii\bootstrap5\ActiveForm::begin(['id' => 'registration-form']); ?>
+
+        <?php $form = ActiveForm::begin(['id' => 'registration-form',
+            'enableAjaxValidation' => true]); ?>
         <?= $form->field($model, 'username') ?>
         <?= $form->field($model, 'password')->passwordInput() ?>
         <?= $form->field($model, 'email')->input('email') ?>
-        <?= $form->field($model, 'photos[]')->fileInput(['multiple'=>'multiple']) ?>
-        <?= $form->field($model, 'subscriptions[]')->checkboxList(['a' => 'Item A',
-            'b' => 'Item B', 'c' => 'Item C']) ?>
+        <?= $form->field($model, 'country') ?>
+        <?= $form->field($model, 'city') ?>
+        <?= $form->field($model, 'phone') ?>
         <div class = "form-group">
-            <?= \yii\bootstrap5\Html::submitButton('Submit', ['class' => 'btn btn-primary',
+            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary',
                 'name' => 'registration-button']) ?>
         </div>
-        <?php \yii\bootstrap5\ActiveForm::end(); ?>
+
+        <?php ActiveForm::end(); ?>
     </div>
 </div>

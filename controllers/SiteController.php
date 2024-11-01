@@ -4,28 +4,19 @@ namespace app\controllers;
 
 use app\models\RegistrationForm;
 use yii\base\DynamicModel;
+use yii\bootstrap5\ActiveForm;
 use yii\web\Controller;
+use yii\web\Response;
 
 class SiteController extends Controller
 {
 
-    public function actionAdHocValidation() {
-        $model = DynamicModel::validateData([
-            'username' => 'John',
-            'email' => 'john@gmail.com'
-        ], [
-            [['username', 'email'], 'string', 'max' => 12],
-            ['email', 'email'],
-        ]);
-
-        if ($model->hasErrors()) {
-            var_dump($model->errors);
-        } else {
-            echo "success";
-        }
-    }
     public function actionRegistration() {
         $model = new RegistrationForm();
+        if (\Yii::$app->request->isAjax && $model->load(\Yii::$app->request>post())) {
+            \Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
         return $this->render('registration', ['model' => $model]);
     }
     function actionIndex()
