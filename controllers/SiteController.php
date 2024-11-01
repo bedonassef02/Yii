@@ -12,6 +12,10 @@ use yii\web\View;
 
 class SiteController extends Controller
 {
+    public function actionIndex()
+    {
+        return $this->render('index');
+    }
     public function actionTestInterface()
     {
         $container = new \yii\di\Container();
