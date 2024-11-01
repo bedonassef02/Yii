@@ -12,13 +12,18 @@ use yii\web\View;
 
 class SiteController extends Controller
 {
-    public function actionIndex()
+    public function actionRoutes()
     {
-        dd(Yii::$app->request->get());
+        return $this->render('routes');
+    }
 
+    function actionIndex()
+    {
         return $this->render('index');
     }
-    public function actionTestInterface()
+
+    public
+    function actionTestInterface()
     {
         $container = new \yii\di\Container();
 
