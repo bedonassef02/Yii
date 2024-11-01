@@ -14,6 +14,8 @@ class SiteController extends Controller
 {
     public function actionIndex()
     {
+        dd(Yii::$app->request->get());
+
         return $this->render('index');
     }
     public function actionTestInterface()
