@@ -13,7 +13,7 @@ class SiteController extends Controller
 
     public function actionRegistration() {
         $model = new RegistrationForm();
-        if (\Yii::$app->request->isAjax && $model->load(\Yii::$app->request>post())) {
+        if (\Yii::$app->request->isAjax && $model->load((array)\Yii::$app->request)) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
         }
